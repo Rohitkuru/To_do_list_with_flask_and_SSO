@@ -19,7 +19,7 @@ app.secret_key = 'notmuchsecreat'
 
 db.init_app(app)
 
-github_blueprint = make_github_blueprint(client_id=client_id,client_secret=client_secret)
+github_blueprint = make_github_blueprint(client_id=os.environ.get('client_id'),client_secret=os.environ.get('client_secret'))
 app.register_blueprint(github_blueprint,url_prefix="/github_login")
 
 app.register_blueprint(auth)
