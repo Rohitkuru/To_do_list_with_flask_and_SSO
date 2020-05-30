@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///to_do_list.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'notmuchsecreat'
-app.config.from_pyfile("config.py")
+
 
 db.init_app(app)
 
