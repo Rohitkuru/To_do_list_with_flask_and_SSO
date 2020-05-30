@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <title>Your To Do Items</title>
+      <link rel="icon" href="{{ url_for('static', filename='img/mdb-favicon.icon')}}" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/addons/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/addons/datatables-select.min.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/search_filter.css') }}">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body >
+<br>
+<br>
+<br>
+<div class="container">
+    <nav aria-label="breadcrumb" id="mainmenu">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url_for('auth.home')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{url_for('operation.add_new')}}">Add New Task</a></li>
+    <li class="breadcrumb-item "><a href="{{url_for('operation.search_task')}}">Edit Task</a></li>
+    <li class="breadcrumb-item "><a href="{{url_for('reports_and_download.reports')}}">Reports</a></li>
+    <li class="breadcrumb-item "><a href="{{url_for('reports_and_download.download_master_file') }}">Download</a></li>
+
+    <li class="breadcrumb-item "><a href="{{url_for('auth.logout') }}">Logout</a></li>
+        <span style="display:inline-block; width: 300px;"></span>
+      <strong><h5><a href="https://github.com"><font color="green">Logged in as <u>{{ login_information }}</u></font></a></h5></strong>
+
+  </ol>
+</nav>
+ {% block add_new_task %}
+
+  {% endblock %}
+
+  {% block datatable %}
+
+  {% endblock %}
+
+   {% block edit_task %}
+
+      {% endblock %}
+
+
+{% block reports %}
+
+
+{% endblock %}
+
+    <!-- End your project here-->
+</div>
+
+<!-- jQuery -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/mdb.min.js')}}"></script>
+  <!-- Your custom scripts (optional) -->
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/addons/datatables.min.js')}}"></script>
+
+
+
+    <script>
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+       });
+    </script>
+</body>
+</html>

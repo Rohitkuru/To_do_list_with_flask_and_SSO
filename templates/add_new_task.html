@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+{% block add_new_task %}
+
+<div class="form-group">
+
+  <form action="/add_new" method="post">
+      <div class="md-form">
+          <input type="text" id="taskname" class="form-control" name="taskname" required>
+          <label for="taskname">Task Name</label>
+      </div>
+
+        <label for="exampleFormControlTextarea3">Task Description</label>
+        <textarea name="taskdescription" class="form-control" id="exampleFormControlTextarea3" rows="5" required></textarea>
+        <br>
+        <select class="browser-default custom-select" name="label"  >
+          <option value="Others">Add Label</option>
+          <option value="Personal">Personal</option>
+          <option value="Work">Work</option>
+          <option value="Family">Family</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Others">Others</option>
+        </select>
+
+        <label  class="col-sm-12 col-form-label">Due Date</label>
+        <input type="date" class="form-control" id="duedate" name="duedate" required>
+        <br>
+
+        <button type="submit" class="btn btn-outline-success btn-rounded waves-effect"><i class="fas fa-cogs pr-2" aria-hidden="true"></i>Add New</button>
+        <br>
+        <br>
+        {% if result == "success" %}
+        <div class="alert alert-success" role="alert">
+            Task has been added successfully!
+        </div>
+        {% elif result == "duedateerror" %}
+          <div class="alert alert-warning" role="alert">
+            Due date cannot be less than today's date!
+          </div>
+
+        {% elif result == "fail" %}
+           <div class="alert alert-danger" role="alert">
+              Error occured while adding task , Please try again .!
+        </div>
+        {% endif %}
+
+
+
+  </form>
+
+
+</div>
+
+
+{% endblock %}

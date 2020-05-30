@@ -1,0 +1,155 @@
+{% extends 'index.html' %}
+
+
+{% block reports %}
+
+<html>
+<head>
+<script>
+window.onload = function() {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	exportEnabled: true,
+	animationEnabled: true,
+	title: {
+		text: "Task Status"
+	},
+	data: [{
+		type: "pie",
+		startAngle: 25,
+		toolTipContent: "<b>{label}</b>: {y}%",
+		showInLegend: "true",
+		legendText: "{label}",
+		indexLabelFontSize: 16,
+		indexLabel: "{label} - {y}",
+		dataPoints: [
+		{% for key,value in pie_chart_data.items() %}
+			{ y:  {{ value }}, label: "{{ key }}" },
+			{% endfor %}
+		]
+	}]
+});
+chart.render();
+
+
+var chart = new CanvasJS.Chart("chartContainer1", {
+	animationEnabled: true,
+
+	title:{
+		text:"Task Labels"
+	},
+	axisX:{
+		interval: 1
+	},
+	axisY2:{
+		interlacedColor: "rgba(1,77,101,.2)",
+		gridColor: "rgba(1,77,101,.1)",
+		title: ""
+	},
+	data: [{
+		type: "bar",
+		name: "companies",
+		axisYType: "secondary",
+		color: "#014D65",
+		dataPoints: [
+
+		{% for key,value in bar_charts_data.items() %}
+			{ y: {{ value }}, label: "{{ key }}" },
+	   	 {% endfor %}
+		]
+	}]
+});
+chart.render();
+
+
+var chart = new CanvasJS.Chart("chartContainer3", {
+	animationEnabled: true,
+	title:{
+		text: "Incomplete vs Complete"
+	},
+	axisY: {
+		title: "",
+		titleFontColor: "#4F81BC",
+		lineColor: "#4F81BC",
+		labelFontColor: "#4F81BC",
+		tickColor: "#4F81BC"
+	},
+	axisY2: {
+		title: "",
+		titleFontColor: "#C0504E",
+		lineColor: "#C0504E",
+		labelFontColor: "#C0504E",
+		tickColor: "#C0504E"
+	},
+	toolTip: {
+		shared: true
+	},
+	legend: {
+		cursor:"pointer",
+		itemclick: toggleDataSeries
+	},
+	data: [{
+		type: "column",
+		name: "Complete",
+		legendText: "Complete",
+		showInLegend: true,
+		dataPoints:[
+        {% for key,value in multiple_bar_charts_data.items() %}
+    		{ label: "{{ key }}", y: {{ value['Complete'] }}  },
+    	{% endfor %}
+
+		]
+	},
+	{
+		type: "column",
+		name: "Incomplete",
+		legendText: "Incomplete",
+		axisYType: "secondary",
+		showInLegend: true,
+		dataPoints:[
+        {% for key,value in multiple_bar_charts_data.items() %}
+    		{ label: "{{ key }}", y: {{ value['Incomplete'] }}  },
+    	{% endfor %}
+
+
+		]
+	}]
+});
+chart.render();
+
+function toggleDataSeries(e) {
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else {
+		e.dataSeries.visible = true;
+	}
+	chart.render();
+}
+
+
+
+
+
+
+
+}
+</script>
+</head>
+<body>
+<div class="row">
+    <div id="chartContainer" style="height: 370px; width: 50%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <div id="chartContainer1" style="height: 370px; width: 50%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</div>
+</body>
+</html>
+
+
+{% endblock %}

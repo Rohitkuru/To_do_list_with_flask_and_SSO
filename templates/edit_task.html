@@ -1,0 +1,93 @@
+{% extends 'index.html' %}
+
+{% block edit_task %}
+
+            {% if search == "on" %}
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for your task..">
+
+                        <ul id="myUL">
+                           {% for x in all_records %}
+                                <li><a href="{{url_for('operation.edit_task',task=x.task) }}">{{ x.task }}</a></li>
+                            {% endfor %}
+                        </ul>
+                {% endif %}
+                {% if edit == "on" %}
+            <form action="/edit_task" method="post">
+                              <div class="md-form">
+                                  <input type="text" id="taskname" class="form-control" name="taskname" placeholder="{{ record.task }}" readonly>
+                                  <label for="taskname">Task Name</label>
+                              </div>
+
+                                <label for="exampleFormControlTextarea3" >Task Description</label>
+                                <textarea name="taskdescription"  class="form-control" id="exampleFormControlTextarea3" rows="5" >{{record.description}}</textarea>
+
+
+                                <br>
+                                <select class="browser-default custom-select" name="status"  >
+                                  <option value={{ record.status }}>{{ record.status }}</option>
+                                  <option value="InProgress">In-Progress</option>
+                                  <option value="OnHold">On Hold</option>
+                                  <option value="Complete">Complete</option>
+                                </select>
+                                    <br>
+                                    <br>
+                            <button type="submit" class="btn btn-outline-success btn-rounded waves-effect"><i class="fas fa-cogs pr-2" aria-hidden="true"></i>Update</button>
+                            <br>
+                            <br>
+                            {% if result == "success" %}
+                            <div class="alert alert-success" role="alert">
+                                Task has been updated successfully!
+                            </div>
+
+                            {% elif result == "fail" %}
+                               <div class="alert alert-danger" role="alert">
+                                  Error occured while adding task , Please try again .!
+                            </div>
+                            {% endif %}
+                 {% endif %}
+
+                    {% if status == "complete" %}
+
+                            <div class="md-form">
+                                  <input type="text" id="taskname1" class="form-control" name="taskname" placeholder="{{ record.task }}" readonly>
+                                  <label for="taskname">Task Name</label>
+                              </div>
+
+                                <label for="exampleFormControlTextarea3">Task Description</label>
+                                <textarea name="taskdescription" class="form-control" id="exampleFormControlTextarea4" placeholder="{{record.description}}" rows="5" readonly ></textarea>
+
+
+                                <br>
+                                <select class="browser-default custom-select" name="status"  >
+                                  <option value={{ record.status }}>{{ record.status }}</option>
+                                </select>
+
+                    {% endif %}
+
+
+
+
+
+                        <script>
+                            function myFunction() {
+                              // Declare variables
+                              var input, filter, ul, li, a, i, txtValue;
+                              input = document.getElementById('myInput');
+                              filter = input.value.toUpperCase();
+                              ul = document.getElementById("myUL");
+                              li = ul.getElementsByTagName('li');
+
+                              // Loop through all list items, and hide those who don't match the search query
+                              for (i = 0; i < li.length; i++) {
+                                a = li[i].getElementsByTagName("a")[0];
+                                txtValue = a.textContent || a.innerText;
+                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                  li[i].style.display = "";
+                                } else {
+                                  li[i].style.display = "none";
+                                }
+                              }
+                            }
+                        </script>
+
+{% endblock %}
