@@ -26,7 +26,6 @@ app.register_blueprint(auth)
 app.register_blueprint(operation)
 app.register_blueprint(reports_and_download)
 
-db.create_all()
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -38,10 +37,9 @@ def load_user(user_id):
 with app.app_context():
     db.create_all()
 
-'''    
 
+'''
 if __name__ == '__main__':
-    #This will create DB
-    db.create_all()
+ 
     app.run()
 '''
