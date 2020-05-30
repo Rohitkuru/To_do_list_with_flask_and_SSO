@@ -5,7 +5,7 @@ from operation.operation_views import operation
 from reports_and_download.reports_and_download import reports_and_download
 from models import *
 from flask_dance.contrib.github import make_github_blueprint
-import config
+
 
 import os
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
@@ -19,7 +19,7 @@ app.config.from_pyfile("config.py")
 
 db.init_app(app)
 
-github_blueprint = make_github_blueprint(client_id=config.client_id,client_secret=config.client_secret)
+github_blueprint = make_github_blueprint(client_id=client_id,client_secret=client_secret)
 app.register_blueprint(github_blueprint,url_prefix="/github_login")
 
 app.register_blueprint(auth)
