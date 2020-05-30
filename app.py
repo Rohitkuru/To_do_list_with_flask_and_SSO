@@ -41,5 +41,6 @@ def load_user(user_id):
 
 
 if __name__ == '__main__':
+    #This will create DB
     db.create_all()
     app.run()
