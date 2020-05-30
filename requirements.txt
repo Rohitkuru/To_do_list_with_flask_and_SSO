@@ -9,11 +9,13 @@ Flask-Login==0.5.0
 Flask-Migrate==2.5.3
 flask-ngrok==0.0.25
 Flask-SQLAlchemy==2.4.1
+gunicorn==20.0.4
 idna==2.9
 itsdangerous==1.1.0
 Jinja2==2.11.2
 Mako==1.1.2
 MarkupSafe==1.1.1
+ngrok==0.0.1
 oauthlib==3.1.0
 python-dateutil==2.8.1
 python-editor==1.0.4
