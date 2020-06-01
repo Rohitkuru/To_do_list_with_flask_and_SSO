@@ -27,3 +27,4 @@ SQLAlchemy-Utils==0.36.6
 urllib3==1.25.9
 URLObject==2.4.3
 Werkzeug==1.0.1
+psycopg2==2.8.5
