@@ -69,7 +69,7 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
                   {% for line in value %}
-                        <a class="nav-link"> {{ line[0] }} <span class="sr-only">(current)</span></a>
+                        <a class="nav-link"> {{ line[0] }} <span style="display:inline-block; width: 50px;"></span> {{ line[1] }} <span style="display:inline-block; width: 150px;"></span> {{ line[2] }} <span class="sr-only">(current)</span></a>
                   {% endfor %}
                 </li>
             </ul>
