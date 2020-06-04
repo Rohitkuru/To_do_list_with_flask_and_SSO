@@ -38,7 +38,10 @@ def admin_view():
             for y in Todolist.query.all():
                 if x.id == y.user_id:
                     data[x.user_name].append((y.task,y.label,y.status))
-        return render_template("admin_view.html",users_data=User.query.all(),login_information=current_user.user_name,tasks_data=Todolist.query.all(),data=data)
+
+        return render_template("admin_view.html",users_data=User.query.all(),pending = Todolist.query.filter_by("status" != "Complete").all(),
+                               complete = Todolist.query.filter_by("status" == "Complete").all(),
+                               login_information=current_user.user_name,tasks_data=Todolist.query.all(),data=data)
     else:
         return render_template("admin_access_denied.html",login_information=current_user.user_name)
 
