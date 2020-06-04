@@ -25,7 +25,7 @@ def add_new():
         try:
             due_date_diff = datetime.now()- datetime.strptime(request.form['duedate'],'%Y-%m-%d')
             if due_date_diff.days <= 0:
-                record = Todolist(task=request.form['taskname'],description=request.form['taskdescription'],start_date=datetime.now(),label=request.form['label'],status="New",due_date = datetime.strptime(request.form['duedate'],'%Y-%m-%d'),user_id=current_user.id)
+                record = Todolist(task=request.form['taskname'],description=request.form['taskdescription'],start_date=datetime.now(),label=request.form['label'],status="New",due_date = datetime.strptime(request.form['duedate'],'%Y-%m-%d'),user_id=current_user.user_name)
                 db.session.add(record)
                 db.session.commit()
             else:
