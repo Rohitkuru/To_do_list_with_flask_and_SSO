@@ -32,7 +32,7 @@ def home():
 @auth.route("/admin_view")
 def admin_view():
     if current_user.user_name == "Rohitkuru":
-        return render_template("admin_view.html",users_data=User.query.all(),login_information=current_user.user_name)
+        return render_template("admin_view.html",users_data=User.query.all(),login_information=current_user.user_name,tasks_data=Todolist.query.all())
     else:
         return render_template("admin_access_denied.html",login_information=current_user.user_name)
 
