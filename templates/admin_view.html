@@ -16,9 +16,9 @@
         <div class="media white z-depth-1 rounded">
           <i class="far fa-money-bill-alt fa-lg blue z-depth-1 p-4 rounded-left text-white mr-3"></i>
           <div class="media-body p-1">
-            <p class="text-uppercase text-muted mb-1"><small>Users</small></p>
-            <h5 class="font-weight-bold mb-0">{{ users_data | length }}</h5>
-          </div>
+              <p class="text-uppercase text-muted mb-1"><small>Users</small></p>
+           <h5 class="font-weight-bold mb-0">{{ users_data | length }}</h5>
+            </div>
         </div>
 
 
@@ -51,10 +51,35 @@
   <!-- Section: Block Content -->
 
 
- <!-- Section: Block Content -->
+<!--Navbar-->
+  {% for key,value in data.items() %}
+        <nav class="navbar navbar-light light-blue lighten-4">
+          <!-- Navbar brand -->
+          <a class="navbar-brand">{{ key }}</a>
 
-      <!-- Section: Block Content -->
+          <!-- Collapse button -->
+          <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+            aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+                class="fas fa-bars fa-1x"></i></span></button>
 
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                  {% for line in value %}
+                        <a class="nav-link">line[0] <span class="sr-only">(current)</span></a>
+                  {% endfor %}
+                </li>
+            </ul>
+            <!-- Links -->
+
+          </div>
+          <!-- Collapsible content -->
+
+        </nav>
+    {% endfor %}
 
 
 

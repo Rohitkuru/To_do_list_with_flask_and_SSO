@@ -32,7 +32,13 @@ def home():
 @auth.route("/admin_view")
 def admin_view():
     if current_user.user_name == "Rohitkuru":
-        return render_template("admin_view.html",users_data=User.query.all(),login_information=current_user.user_name,tasks_data=Todolist.query.all())
+        data = {}
+        for x in User.query.all():
+            data[x.user_name] = []
+            for y in Todolist.query.all():
+                if x.id == y.user_id:
+                    data[x.user_name].append((y.task,y.label,y.status))
+        return render_template("admin_view.html",users_data=User.query.all(),login_information=current_user.user_name,tasks_data=Todolist.query.all(),data=data)
     else:
         return render_template("admin_access_denied.html",login_information=current_user.user_name)
 
