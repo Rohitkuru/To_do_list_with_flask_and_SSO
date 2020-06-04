@@ -30,6 +30,8 @@
     <li class="breadcrumb-item"><a href="{{url_for('operation.add_new')}}">Add New Task</a></li>
     <li class="breadcrumb-item "><a href="{{url_for('operation.search_task')}}">Edit Task</a></li>
     <li class="breadcrumb-item "><a href="{{url_for('reports_and_download.reports')}}">Reports</a></li>
+      <li class="breadcrumb-item "><a href="{{url_for('auth.admin_view')}}">Admin</a></li>
+
     <li class="breadcrumb-item "><a href="{{url_for('reports_and_download.download_master_file') }}">Download</a></li>
 
     <li class="breadcrumb-item "><a href="{{url_for('auth.logout') }}">Logout</a></li>
@@ -55,6 +57,11 @@
 
 
 {% endblock %}
+
+
+{% block admin_view %}
+
+    {% endblock %}
 
     <!-- End your project here-->
 </div>

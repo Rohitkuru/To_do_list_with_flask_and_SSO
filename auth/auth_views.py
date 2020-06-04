@@ -1,4 +1,4 @@
-from flask import Blueprint,redirect,url_for,session
+from flask import Blueprint,redirect,url_for,session,render_template
 from flask_dance.contrib.github import github
 from flask_login import login_user,login_required,logout_user
 
@@ -6,9 +6,6 @@ from flask_login import login_user,login_required,logout_user
 auth = Blueprint("auth",__name__)
 
 from models import *
-
-
-
 
 
 
@@ -31,6 +28,13 @@ def home():
             login_user(create_user)
 
     return redirect(url_for('operation.user_home'))
+
+@auth.route("/admin_view")
+def admin_view():
+    return render_template("admin_view.html",users_data=User.query.all())
+
+
+
 
 
 @auth.route("/logout")
