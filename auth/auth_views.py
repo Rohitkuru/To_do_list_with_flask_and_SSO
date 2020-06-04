@@ -1,6 +1,6 @@
 from flask import Blueprint,redirect,url_for,session,render_template
 from flask_dance.contrib.github import github
-from flask_login import login_user,login_required,logout_user
+from flask_login import login_user,login_required,logout_user,current_user
 
 
 auth = Blueprint("auth",__name__)
@@ -31,7 +31,7 @@ def home():
 
 @auth.route("/admin_view")
 def admin_view():
-    return render_template("admin_view.html",users_data=User.query.all())
+    return render_template("admin_view.html",users_data=User.query.all(),login_information=current_user.user_name)
 
 
 
