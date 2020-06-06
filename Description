@@ -1,0 +1,47 @@
+This application is designed and developed considering all security issues, cost and easy user interaction with data visualization API's.
+
+Application is accessible on below link
+
+https://to-do-app-with-flask-and-sso.herokuapp.com/
+
+Security:
+
+Main feature for this application that it has Single Sign on Feature enabled with Identity provider like GitHub. Application only expect GitHub registered users to login in this application. If user do not have account on GitHub. It redirect him/her to GitHub login page to authenticate or either create account. Once account is ready for user, he/she have privilege to authorize this application. Once it is authorized by user, user can get in. Also application makes sure that user is able to view his/her own tasks while working on application and apart from admin user no one has admin rights to view admin tab. Another important security feature is that, application is deployed on Heroku platform which gives domain SSL encryption by default. So all data in transit is encrypted. Admin tab is only visible to me as of now as ADMIN of this site which helps to monitor incoming traffic on the application. Please refer screen shot and video for more details about this option
+
+Cost:
+
+Application is deployed on Heroku platform which is server less in nature where no server provision/maintenance cost is involved. In case of heavy traffic, Heroku plans are easy to change as per our requirements and in them as well there will be no server provision or maintenance cost is involved.
+
+User interaction:
+
+Data visualization is major part of this application where all user related task can be visualize using graphs like Pie Diagram, Bar Diagram, and Multibar diagram. Tasks are categorized on basis of label that is assigned to them and their status as well. One click view gives user a summaries view of his/her all current and previous tasks.
+
+Functionality:
+
+User can add, edit task in his/her list and assign label, due date as soon as task is submitted. Task status can be changed as per user requirement to "In-Progress”, “On-Hold”, “Complete" Once task is mark as complete ,it cannot be edit by user. User has to assign label like "Work" or "Personal" while submitting task, if no label is choose, default label will be set as others.
+
+
+
+Stack used:
+Python
+Flask - python web framwork
+HTML MDN Bootstrap
+Jinja templates
+SQLITE database
+Heroku
+
+
+1) User require Github account to login in this application , if user do not have account , user can create new account on github. Once you click on application link , it will take you to github login page to login. Application can be identified by Github logo
+
+https://to-do-app-with-flask-and-sso.herokuapp.com/
+
+User can create account on Github , if he/she do not have account on Github.
+
+2) Home view gives tabular format view for all user related tasks with search bar and pagination enabled . Hyperlink is available on task column which takes user to edit particular task details. 3) User can add, edit task in his/her list and assign label, due date as soon as task is submitted. 4) Task status can be changed as per user requirement to "In-Progress”, “On-Hold”, “Complete" 5) Once task is mark as complete ,it cannot be edit by user. User has to assign label like "Work" or "Personal" while submitting task, if no label is choose, default label will be set as others. 6) Using download option user can download all tasks details in CSV file
+7) logout will take you back to github and if you logged out from github you will be logged out from application as well .
+
+
+
+https://ttprivatenew.s3.amazonaws.com/pulse/rohit-gmail-48/attachments/13737351/TinyTake06-06-2020-10-59-18.mp4
+<video width="90%" height="90%" controls autoplay><source src="https://ttprivatenew.s3.amazonaws.com/pulse/rohit-gmail-48/attachments/13737351/TinyTake06-06-2020-10-59-18.mp4" type="video/mp4">Your browser does not support the video tag.</video><br /><a href="https://www.tinytake.com" title="Powered by TinyTake Screen Capture">Powered by TinyTake Screen Capture</a>
+https://rohit-gmail-48.tinytake.com/tt/NDM1Njg1N18xMzczNzM1MQ
