@@ -62,7 +62,7 @@ def edit_task(task=None):
             return render_template("edit_task.html",edit="on",result="fail",record=record,login_information=current_user.user_name)
 
     record = Todolist.query.filter_by(task=task).first()
-    if record.id == current_user.id:
+    if record.user_id == current_user.id:
         if record.status == "Complete":
             return render_template("edit_task.html",status="complete",record=record,login_information=current_user.user_name)
         session['record'] = task
