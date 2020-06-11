@@ -69,6 +69,6 @@ def edit_task(task=None):
             session['record'] = task
             return render_template("edit_task.html",edit="on",record=record,login_information=current_user.user_name)
         else:
-            return "Unauthorized access "
+            return "Unauthorized access .. This incident is reported"
     else:
         return "Unauthorized Way to access task .. This incident is reported"
